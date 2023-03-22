@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+</head>
+<body>
+    Задача 5. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+<br>
+    <script>
+    let names = ['Andrew', 'Olga', 'Pavel', 'Ivan', 'Ihor','Anthony', 'Mykyta', 'Bohdan'] 
+    console.log(names)
+
+    let leftIndex = 0
+    let rightIndex = names.length-1
+
+   while(leftIndex<rightIndex){
+    for (let i=leftIndex; i<rightIndex; i++) {
+      if(names[i]>names[i+1]){
+        let tmp = names[i+1]
+        names[i+1] = names[i]
+        names[i] = tmp
+      }}
+    rightIndex--
+    for (let i=rightIndex; i>leftIndex; i--) {
+      if(names[i]<names[i-1]){
+        let tmp = names[i-1]
+        names[i-1] = names[i]
+        names[i] = tmp
+            
+      }}  
+      leftIndex++
+  }
+  console.log(names)
+  
+  
+ function getOlga(names, searchElement) {
+    let start = 0
+    let end = names.length-1
+    while(start<=end){
+        const middle = Math.floor((start+end)/2)
+        if(names[middle]===searchElement) return middle
+        if(names[middle]<searchElement) start = middle+1
+        if(names[middle]>searchElement) end = middle-1
+    }
+    return false
+ }
+
+if(getOlga(names, 'Olga'))  console.log(`Ім'я Ольга є під індексом ${getOlga(names, 'Olga')}`)
+else console.log('Імені Ольга в масиві немає')
+
+    
+    </script>
+</body>
+</html>

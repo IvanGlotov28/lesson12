@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+<body>
+    Задача 4. Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком.
+<br>
+
+    <script>
+             function getRandomNum(minV, maxV) {
+    return minV + Math.floor(Math.random() * (maxV - minV + 1))
+   }
+            
+   function getRandomArray(){
+    const arr = []
+    for(let i=0; i<30; i++){
+        arr.push(getRandomNum(1, 100))
+    }
+    return arr
+   }
+
+   const arr1 =  getRandomArray()
+
+   document.write(`<table border=2px>`)    
+            do{
+            changed = false
+            for(let i=1; i< arr1.length; i++){
+            if( arr1[i-1] > arr1[i] ){
+            let tmp = arr1[i-1]
+            arr1[i-1] = arr1[i]
+            arr1[i] = tmp
+            changed = true
+            }
+            }
+            document.write(`<tr><td>${arr1}</td></tr> <br>`)
+        }
+            while(changed)
+            document.write(`</table>`)
+
+            document.write('=====================сортування бульбашкою==========================')
+
+
+            const arr2 =  getRandomArray()
+
+let leftIndex = 0
+let rightIndex = arr2.length-1
+
+ 
+document.write(`<table border=2px>`)    
+
+   while(leftIndex<rightIndex){
+    for (let i=leftIndex; i<rightIndex; i++) {
+      if(arr2[i]>arr2[i+1]){
+        let tmp = arr2[i+1]
+            arr2[i+1] = arr2[i]
+            arr2[i] = tmp
+      }}
+    rightIndex--
+    for (let i=rightIndex; i>leftIndex; i--) {
+      if(arr2[i]<arr2[i-1]){
+        let tmp = arr2[i-1]
+            arr2[i-1] = arr2[i]
+            arr2[i] = tmp
+            
+      }}  
+      leftIndex++
+      document.write(`<tr><td>${arr2}</td></tr> <br>`)
+
+  }
+  document.write(`</table>`)
+  document.write('=====================сортування змішуванням==========================')
+
+
+
+  document.write(`<table border=2px>`)    
+
+    const arr3 =  getRandomArray()
+
+  for(let i=1; i<arr3.length; i++){
+    document.write(`<tr><td>${arr3}</td></tr> <br>`)
+
+    const currentElement = arr3[i]
+    let j= i-1
+    while(j>=0 && arr3[j]>currentElement){
+        arr3[j+1] = arr3[j]
+        j=j-1
+        
+    }
+    arr3[j+1] = currentElement
+
+}
+
+document.write(`</table>`)
+document.write('=====================сортування включенням==========================')
+
+
+
+    </script>
+</body>
+</html>
